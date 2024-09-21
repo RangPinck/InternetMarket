@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.internetshop.view.market.Market
 import com.example.internetshop.view.startscreen.StartScreen
 
 @Composable
@@ -12,7 +13,7 @@ fun Navigation() {
 
     NavHost(navController = navController, startDestination = Routes.Start.route) {
         composable(Routes.Start.route) { StartScreen(navController) }
-        composable(Routes.Market.route) { }//}//Market(navController) }
+        composable(Routes.Market.route) { Market(navController) }
         composable(Routes.LogIn.route) { }//SignIn(navController) }
         composable(Routes.Registration.route) { }//SignUp(navController) }
         composable(Routes.Profile.route) { }//Profile(navController) }

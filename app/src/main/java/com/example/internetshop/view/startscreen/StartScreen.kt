@@ -10,10 +10,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.navigation.NavController
+import com.example.internetshop.view.navigation.NavigationFun
+import com.example.internetshop.view.navigation.Routes
 import com.example.internetshop.view.startscreen.components.StartText
 
 @Composable
 fun StartScreen(navController : NavController) {
+    val nav = NavigationFun()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -30,5 +34,6 @@ fun StartScreen(navController : NavController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         StartText()
+        nav.GoToNextScreen(navController, Routes.Start.route, Routes.Market.route)
     }
 }
