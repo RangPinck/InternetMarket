@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    kotlin("plugin.serialization") version "1.9.22"
 }
 
 android {
@@ -66,4 +67,15 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+
+    implementation(libs.androidx.navigation.compose)
+    implementation(platform(libs.bom))
+    implementation(libs.postgrest.kt)
+    implementation(libs.gotrue.kt)
+    implementation(libs.realtime.kt)
+    implementation(libs.storage.kt)
+    implementation(libs.functions.kt)
+    implementation(libs.ktor.client.android)
+    implementation(libs.coil.compose)
 }
