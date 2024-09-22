@@ -24,7 +24,7 @@ fun Market(navController: NavController) {
             modifier = Modifier
                 .padding(paddingValues)
         ) {
-            MainTextField(lable = "Введите почту", place = "почта")
+
         }
     }
 }

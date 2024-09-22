@@ -1,5 +1,6 @@
 package com.example.internetshop.view.commonparts.bars.bottombar
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -26,10 +27,13 @@ import com.example.internetshop.view.commonparts.bars.bottombar.components.BarFo
 import com.example.internetshop.view.commonparts.bars.bottombar.components.BarForUncownUser
 import com.example.internetshop.view.commonparts.bars.bottombar.components.BarForUser
 import com.example.internetshop.view.commonparts.localuser.UserSpecificData
+import com.example.internetshop.view.navigation.NavigationFun
 import com.example.internetshop.view.navigation.Routes
 
 @Composable
 fun BoottomBar(navController: NavController) {
+    val nav = NavigationFun()
+
     var state = false
 
     var barList = remember {
@@ -39,12 +43,12 @@ fun BoottomBar(navController: NavController) {
     val whereFrom = navController.currentBackStackEntry?.destination?.route
 
     barList.value = when {
+        //бар для пользователя
+        UserSpecificData.Role.value == 2 -> BarForUser()
         //бар для продовца
         UserSpecificData.Role.value == 1 -> BarForSeller()
-        //бар для пользователя
-        UserSpecificData.Role.value == 2 -> BarForUncownUser()
         //бар с логином
-        else -> BarForUser()
+        else -> BarForUncownUser()
     }
 
 
@@ -67,7 +71,7 @@ fun BoottomBar(navController: NavController) {
             NavigationBarItem(
                 selected = false,
                 onClick = {
-
+                    nav.GoToNextScreen(navController, whereFrom.toString(), item.route)
                 },
                 icon = {
                     Image(

@@ -12,6 +12,7 @@ fun DelayBeforeSwitch(navController: NavController) {
     val viewvModel = StartScreenViewModel()
     LaunchedEffect(Unit) {
         delay(1000L)
+        viewvModel.GetCurentUser()
         viewvModel.navNext(navController)
     }
 }

@@ -32,7 +32,7 @@ fun ProductImageNone(size: Int) {
             contentDescription = "standart product image",
             colorFilter = ColorFilter.tint(Color.White),
             modifier = Modifier
-                .size(size.dp)
+                .size((size/2).dp)
                 .clip(RoundedCornerShape(10))
         )
     }
