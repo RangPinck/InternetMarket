@@ -11,23 +11,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class CurrentUserData() {
-
-    suspend fun RefreshCurrantSession() {
-        if (Constants.supabase.auth.currentSessionOrNull() == null) {
-            withContext(Dispatchers.IO) {
-                try {
-                    Constants.supabase.auth.refreshCurrentSession()
-                } catch (e: Exception) {
-                    Log.e("user", "user session not found")
-                }
-            }
-        }
-    }
-
     suspend fun GetSpecificUserData() {
         if (Constants.supabase.auth.currentSessionOrNull() != null) {
             UserSpecificData.id.value = Constants.supabase.auth.currentUserOrNull()!!.id
-
             try {
                 UserSpecificData.Role.value =
                     Constants.supabase.from("User")

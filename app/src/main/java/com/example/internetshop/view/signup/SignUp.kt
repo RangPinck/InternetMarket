@@ -8,11 +8,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.internetshop.view.commonparts.bars.bottombar.BoottomBar
 import com.example.internetshop.view.commonparts.bars.topbar.TopBar
@@ -30,6 +33,16 @@ fun SignUp(navController: NavController) {
     val passwordTwo = remember { mutableStateOf("") }
     val nickname = remember { mutableStateOf("") }
     val seller = remember { mutableStateOf(false) }
+    val viewModel = SignUpViewModel()
+    val enableButton = remember { mutableStateOf(false) }
+
+    /*
+    * Проблемы с обновлением роли пользователя, тк он по сути записан в кэш, поэтому, елси получать
+    * id текущего пользователя, вернётся id того, которого не отрисовало.
+    * Из - за этого пользоваителя невозможно зарегистировать, потому что создаётся его профиль,
+    * а другие мета данне необходимо задавать отдельно, зайдя уже под только что созданного пользователя
+    * */
+
 
     Scaffold(
         topBar = {
@@ -58,21 +71,29 @@ fun SignUp(navController: NavController) {
                     isForPass = false
                 )
 
-                MessageOfEmailAreNotEqales(email.value)
-
                 Spacer(modifier = Modifier.height(10.dp))
                 passwordOne.value = MainTextField(lable = "Введите пароль:", isForPass = true)
                 Spacer(modifier = Modifier.height(10.dp))
                 passwordTwo.value = MainTextField(lable = "Повторите пароль:", isForPass = true)
             }
 
-            MessageOfErrorPasswordEquality(passwordOne.value, passwordTwo.value)
+            enableButton.value =
+                MessageOfErrorPasswordEquality(passwordOne.value, passwordTwo.value)
 
             createCheckbox(seller)
 
-            BlueButton(onClick = {
-                //
-            }, text = "Регистрация")
+            BlueButton(
+                onClick = {
+                    viewModel.SifnUpWithEmail(
+                        emailUser = email.value,
+                        passwordUser = passwordOne.value,
+                        name = nickname.value,
+                        isSeller = seller.value,
+                        navController
+                    )
+                }, text = "Регистрация",
+                isEnable = enableButton.value
+            )
         }
     }
 }

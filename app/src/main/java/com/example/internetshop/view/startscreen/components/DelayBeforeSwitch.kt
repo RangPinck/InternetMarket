@@ -11,8 +11,8 @@ import kotlinx.coroutines.delay
 fun DelayBeforeSwitch(navController: NavController) {
     val viewvModel = StartScreenViewModel()
     LaunchedEffect(Unit) {
-        delay(1000L)
         viewvModel.GetCurentUser()
+        delay(1000L)
         viewvModel.navNext(navController)
     }
 }

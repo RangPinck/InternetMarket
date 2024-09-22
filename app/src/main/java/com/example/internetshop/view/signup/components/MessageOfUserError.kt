@@ -1,7 +1,5 @@
 package com.example.internetshop.view.signup.components
 
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -14,19 +12,26 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.internetshop.view.signup.SignUpViewModel
 import com.example.internetshop.view.ui.theme.Kanit
 
 @Composable
-fun MessageOfErrorPasswordEquality(pswdOne: String, pswdTwo: String) {
+fun MessageOfErrorPasswordEquality(pswdOne: String, pswdTwo: String) : Boolean {
     val str = remember {
         mutableStateOf("")
     }
 
+    var result = remember {
+        mutableStateOf(false)
+    }
+
     LaunchedEffect(key1 = pswdTwo) {
-        str.value = when{
+        str.value = when {
             pswdOne == pswdTwo -> ""
             else -> "Разные пароли!"
         }
+
+        result.value = (!pswdOne.isNullOrEmpty() && !pswdTwo.isNullOrEmpty() && pswdOne == pswdTwo)
     }
 
     Text(
@@ -38,20 +43,20 @@ fun MessageOfErrorPasswordEquality(pswdOne: String, pswdTwo: String) {
         textAlign = TextAlign.Center
     )
 
+    return result.value
 }
 
 @Composable
-fun MessageOfEmailAreNotEqales(email: String) {
+fun MessageOfEmailAreNotEqales(flagExistEmail: Boolean) {
     val str = remember {
         mutableStateOf("")
     }
 
-    LaunchedEffect(key1 = email) {
-        str.value = when{
-            true -> ""
-            else -> "Разные пароли!"
-        }
+    str.value = when {
+        flagExistEmail -> ""
+        else -> "Почта уже существует!"
     }
+
     Text(
         text = str.value,
         fontFamily = Kanit,

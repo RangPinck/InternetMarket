@@ -15,7 +15,7 @@ import com.example.internetshop.view.commonparts.texts.SmallEBoldKanitWhiteText
 
 
 @Composable
-fun BlueButton(onClick: () -> Unit, text: String, invert: Boolean = false) {
+fun BlueButton(onClick: () -> Unit, text: String, invert: Boolean = false, isEnable: Boolean = true) {
 
     val buttomSize = when {
         text.length > 20 -> 65
@@ -33,6 +33,7 @@ fun BlueButton(onClick: () -> Unit, text: String, invert: Boolean = false) {
             }
 
         ),
+        enabled = isEnable,
         modifier = Modifier
             .size(300.dp, buttomSize.dp)
             .border(

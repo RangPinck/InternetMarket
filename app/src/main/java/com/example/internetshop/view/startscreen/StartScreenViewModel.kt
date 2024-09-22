@@ -18,8 +18,8 @@ class StartScreenViewModel() : ViewModel() {
 
     fun GetCurentUser(){
         val userData = CurrentUserData()
+
         viewModelScope.launch {
-            userData.RefreshCurrantSession()
             userData.GetSpecificUserData()
         }
     }
