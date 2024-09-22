@@ -1,5 +1,6 @@
 package com.example.internetshop.view.navigation
 
+import Profile
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -19,7 +20,7 @@ fun Navigation() {
         composable(Routes.Market.route) { Market(navController) }
         composable(Routes.LogIn.route) { SignIn(navController) }
         composable(Routes.Registration.route) { }//SignUp(navController) }
-        composable(Routes.Profile.route) { }//Profile(navController) }
+        composable(Routes.Profile.route) { Profile(navController) }
         composable(Routes.ChangeProfile.route) { }//ChangeData(navController) }
         composable(Routes.SellerPanel.route) { }//SellerPanel(navController) }
     }

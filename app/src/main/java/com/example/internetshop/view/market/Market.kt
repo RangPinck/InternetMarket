@@ -54,7 +54,8 @@ fun Market(navController: NavController) {
                             cost = product.Salary
                         )
                     }
-                })
+                }
+            )
         }
     }
 }
