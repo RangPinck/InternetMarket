@@ -66,7 +66,10 @@ fun MainTextField(lable: String, isForPass: Boolean = false, place: String = "")
                         alpha = 0.5f
                     )
 
-                    else -> SmallNornalKanitBlueText(text = place)
+                    else -> SmallNornalKanitBlueText(
+                        text = place,
+                        alpha = 0.5f
+                    )
                 }
             },
             singleLine = true,
@@ -78,7 +81,10 @@ fun MainTextField(lable: String, isForPass: Boolean = false, place: String = "")
                     shape = RoundedCornerShape(15.dp)
                 )
                 .clip(RoundedCornerShape(15.dp)),
-            visualTransformation = if (passwordVis.value) VisualTransformation.None else PasswordVisualTransformation(),
+            visualTransformation = when {
+                isForPass && passwordVis.value -> PasswordVisualTransformation()
+                else -> VisualTransformation.None
+            },
             trailingIcon = {
                 if (isForPass) {
                     IconButton(onClick = { passwordVis.value = !passwordVis.value }) {
