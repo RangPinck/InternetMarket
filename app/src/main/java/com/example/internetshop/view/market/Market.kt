@@ -10,6 +10,7 @@ import com.example.internetshop.view.commonparts.bars.bottombar.BoottomBar
 import com.example.internetshop.view.commonparts.bars.topbar.TopBar
 import com.example.internetshop.view.commonparts.buttons.BlueButton
 import com.example.internetshop.view.commonparts.localuser.UserSpecificData
+import com.example.internetshop.view.commonparts.textfields.MainTextField
 
 @Composable
 fun Market(navController: NavController) {
@@ -23,7 +24,7 @@ fun Market(navController: NavController) {
             modifier = Modifier
                 .padding(paddingValues)
         ) {
-
+            MainTextField(lable = "Введите почту", place = "почта")
         }
     }
 }
