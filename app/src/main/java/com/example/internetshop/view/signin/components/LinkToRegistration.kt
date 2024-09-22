@@ -23,7 +23,7 @@ fun CreateLinktoRegistraion(onClick: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
 
-    ) {
+        ) {
         Text(
             text = "Если нет аккаунта,",
             fontFamily = Kanit,
@@ -32,9 +32,8 @@ fun CreateLinktoRegistraion(onClick: () -> Unit) {
             color = MaterialTheme.colorScheme.primary
         )
         Button(
-            onClick = {
-                onClick
-            },
+            onClick =
+            onClick,
             shape = MaterialTheme.shapes.extraSmall,
             colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.background),
             contentPadding = PaddingValues(0.dp)

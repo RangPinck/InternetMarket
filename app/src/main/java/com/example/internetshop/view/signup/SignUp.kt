@@ -1,6 +1,5 @@
-package com.example.internetshop.view.signin
+package com.example.internetshop.view.signup
 
-import com.example.internetshop.view.signin.components.CreateLinktoRegistraion
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -20,16 +19,17 @@ import com.example.internetshop.view.commonparts.bars.topbar.TopBar
 import com.example.internetshop.view.commonparts.buttons.BlueButton
 import com.example.internetshop.view.commonparts.textfields.MainTextField
 import com.example.internetshop.view.commonparts.texts.BigEBoldKanitSeaColorText
-import com.example.internetshop.view.navigation.NavigationFun
-import com.example.internetshop.view.navigation.Routes
-import com.example.internetshop.view.signin.SignInViewModel
+import com.example.internetshop.view.signup.components.MessageOfEmailAreNotEqales
+import com.example.internetshop.view.signup.components.MessageOfErrorPasswordEquality
+import com.example.internetshop.view.signup.components.createCheckbox
 
 @Composable
-fun SignIn(navController: NavController) {
-    val viewModel = SignInViewModel()
-    val nav = NavigationFun()
+fun SignUp(navController: NavController) {
     val email = remember { mutableStateOf("") }
-    val password = remember { mutableStateOf("") }
+    val passwordOne = remember { mutableStateOf("") }
+    val passwordTwo = remember { mutableStateOf("") }
+    val nickname = remember { mutableStateOf("") }
+    val seller = remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -46,39 +46,33 @@ fun SignIn(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceEvenly
         ) {
-            BigEBoldKanitSeaColorText(
-                "Войдите в свой\n" +
-                        "аккаунт"
-            )
+            BigEBoldKanitSeaColorText("Регистрация");
 
             Column {
+                nickname.value =
+                    MainTextField(lable = "Введите имя:", place = "Youre name", isForPass = false)
+                Spacer(modifier = Modifier.height(10.dp))
                 email.value = MainTextField(
                     lable = "Введите почту:",
-                    isForPass = false,
-                    place = "pochta@pochta.ru"
+                    place = "pochta@pochta.ru",
+                    isForPass = false
                 )
-                Spacer(modifier = Modifier.height(15.dp))
-                password.value = MainTextField(lable = "Введите пароль:", isForPass = true)
+
+                MessageOfEmailAreNotEqales(email.value)
+
+                Spacer(modifier = Modifier.height(10.dp))
+                passwordOne.value = MainTextField(lable = "Введите пароль:", isForPass = true)
+                Spacer(modifier = Modifier.height(10.dp))
+                passwordTwo.value = MainTextField(lable = "Повторите пароль:", isForPass = true)
             }
 
-            BlueButton({
-                viewModel.onSIgInWithEmailAndPassword(
-                    navController = navController,
-                    emailUser = email.value,
-                    passwordUser = password.value,
-                )
-            }, "Войти")
+            MessageOfErrorPasswordEquality(passwordOne.value, passwordTwo.value)
 
-            CreateLinktoRegistraion(
-                onClick =
-                {
-                    nav.GoToNextScreen(
-                        navController,
-                        Routes.LogIn.route,
-                        Routes.Registration.route
-                    )
-                }
-            )
+            createCheckbox(seller)
+
+            BlueButton(onClick = {
+                //
+            }, text = "Регистрация")
         }
     }
 }
