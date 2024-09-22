@@ -68,6 +68,7 @@ fun createProfile(
                 }
             }
 
+            Spacer(modifier = Modifier.width(30.dp))
 
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,

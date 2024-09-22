@@ -80,7 +80,8 @@ fun Profile(navController: NavController) {
                 role = when {
                     UserSpecificData.Role.value == 1 -> "Продавец"
                     else -> "Покупатель"
-                }
+                },
+                image = user.ProfileImage
             )
 
             Column(
