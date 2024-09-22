@@ -16,7 +16,7 @@ class CurrentUserData() {
                 try {
                     Constants.supabase.auth.refreshCurrentSession()
                 } catch (e: Exception) {
-                    Log.e("user", "user not found")
+                    Log.e("user", "user session not found")
                 }
             }
         }
@@ -34,15 +34,14 @@ class CurrentUserData() {
                                 eq("id", UserSpecificData.id.value)
                             }
                         }.decodeSingle<User>().Role
-
-                //Log.e("start", _userRole.value.toString())
+                //Log.e("user", UserSpecificData.Role.value.toString())
             } catch (e: Exception) {
                 Log.e("user", "Error")
                 Log.e("user", e.message.toString())
             }
         } else {
             UserSpecificData.Role.value = 0
-            Log.e("user", UserSpecificData.Role.value.toString())
+            //Log.e("user", UserSpecificData.Role.value.toString())
         }
     }
 }

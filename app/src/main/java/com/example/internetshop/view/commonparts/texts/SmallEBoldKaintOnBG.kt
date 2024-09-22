@@ -9,12 +9,12 @@ import androidx.compose.ui.unit.sp
 import com.example.internetshop.view.ui.theme.Kanit
 
 @Composable
-fun SmallEBoldKaintBlackText(text: String) {
+fun SmallEBoldKaintOnBGText(text: String) {
     Text(
         text = text,
         softWrap = true,
         fontFamily = Kanit,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.ExtraBold,
         fontSize = 15.sp,
         textAlign = TextAlign.Center,
         color = MaterialTheme.colorScheme.onBackground

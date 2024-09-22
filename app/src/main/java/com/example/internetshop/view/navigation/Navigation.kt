@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.internetshop.view.market.Market
+import com.example.internetshop.view.market.MarketViewModel
 import com.example.internetshop.view.signin.SignIn
 import com.example.internetshop.view.startscreen.StartScreen
 import io.github.jan.supabase.gotrue.SessionSource

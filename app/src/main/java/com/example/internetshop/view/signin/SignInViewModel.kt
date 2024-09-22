@@ -25,9 +25,9 @@ class SignInViewModel() : ViewModel() {
                     password = passwordUser
                 }
 
-                Log.d("signIn", user.toString())
-                Log.d("signIn", Constants.supabase.auth.currentUserOrNull()!!.id)
-                Log.d("signIn", "Success")
+//                Log.d("signIn", user.toString())
+//                Log.d("signIn", Constants.supabase.auth.currentUserOrNull()!!.id)
+//                Log.d("signIn", "Success")
 
                 nav.GoToNextScreen(
                     navController,
