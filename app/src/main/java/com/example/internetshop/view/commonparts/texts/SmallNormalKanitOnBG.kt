@@ -9,14 +9,13 @@ import androidx.compose.ui.unit.sp
 import com.example.internetshop.view.ui.theme.Kanit
 
 @Composable
-fun SmallEBoldKaintBlackText(text: String) {
+fun SmallNormalKanitOnBGText(text: String, align: TextAlign) {
     Text(
         text = text,
-        softWrap = true,
         fontFamily = Kanit,
         fontWeight = FontWeight.Normal,
-        fontSize = 15.sp,
-        textAlign = TextAlign.Center,
-        color = MaterialTheme.colorScheme.onBackground
+        fontSize = 18.sp,
+        color = MaterialTheme.colorScheme.onBackground,
+        textAlign = align
     )
 }

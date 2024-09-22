@@ -6,8 +6,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.example.internetshop.view.commonparts.bars.bottombar.BoottomBar
 import com.example.internetshop.view.commonparts.bars.topbar.TopBar
 import com.example.internetshop.view.commonparts.buttons.BlueButton
+import com.example.internetshop.view.commonparts.localuser.UserSpecificData
 
 @Composable
 fun Market(navController: NavController) {
@@ -15,7 +17,7 @@ fun Market(navController: NavController) {
 
     Scaffold(
         topBar = { TopBar() },
-        bottomBar = {}
+        bottomBar = {BoottomBar(navController)}
     ) { paddingValues ->
         Column(
             modifier = Modifier

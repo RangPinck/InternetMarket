@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.sp
 import com.example.internetshop.view.ui.theme.Kanit
 
 @Composable
-fun TextForBorder(text: String) {
+fun SmallEBoldKanitWhiteText(text: String) {
     Text(
         text = text,
         fontSize = 18.sp,
