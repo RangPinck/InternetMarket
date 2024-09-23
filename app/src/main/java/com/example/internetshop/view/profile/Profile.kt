@@ -1,3 +1,4 @@
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -57,7 +58,11 @@ fun Profile(navController: NavController) {
 
     LaunchedEffect(Unit) {
         withContext(Dispatchers.IO) {
-            user = us.GetDataCurrantUerOnNUll()!!
+            try{
+                user = us.GetDataCurrantUerOnNUll()!!
+            }catch (e : Exception){
+                Log.e("Profile", "Dont get data about currant user")
+            }
         }
     }
 
