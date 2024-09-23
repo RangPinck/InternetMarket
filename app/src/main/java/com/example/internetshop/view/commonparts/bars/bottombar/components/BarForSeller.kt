@@ -15,6 +15,10 @@ fun BarForSeller(): List<ButtoonBarNavigationItem> {
             route = Routes.SellerPanel.route
         ),
         ButtoonBarNavigationItem(
+            selectedIcon = R.drawable.plusnav,
+            route = Routes.CreateProduct.route
+        ),
+        ButtoonBarNavigationItem(
             selectedIcon = R.drawable.man,
             route = Routes.Profile.route
         ),

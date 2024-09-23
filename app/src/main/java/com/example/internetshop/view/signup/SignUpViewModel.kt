@@ -8,6 +8,8 @@ import com.example.internetshop.domain.utils.Constants
 import com.example.internetshop.model.User
 import com.example.internetshop.view.navigation.NavigationFun
 import com.example.internetshop.view.navigation.Routes
+import com.example.internetshop.view.profile.ProfileViewModel
+import com.example.internetshop.view.signin.SignInViewModel
 import io.github.jan.supabase.gotrue.auth
 import io.github.jan.supabase.gotrue.providers.builtin.Email
 import io.github.jan.supabase.postgrest.from
@@ -15,6 +17,7 @@ import kotlinx.coroutines.launch
 
 class SignUpViewModel() : ViewModel() {
     val nav = NavigationFun()
+    val signInViewModel = SignInViewModel()
 
     fun SifnUpWithEmail(
         emailUser: String,
@@ -24,10 +27,13 @@ class SignUpViewModel() : ViewModel() {
         navController: NavController
     ) {
         viewModelScope.launch {
+            Constants.supabase.auth.signOut()
 
             var resp = SignUpToAuthWithEmail(
                 emailUser = emailUser, passwordUser = passwordUser
             )
+
+            signInViewModel.onSIgInWithEmailAndPassword(navController, emailUser, passwordUser)
 
             if (resp) {
                 resp = InserNewUser(
@@ -79,13 +85,13 @@ class SignUpViewModel() : ViewModel() {
                     }
                 )
 
-                Log.e("signUp", insertUser.toString())
-                Log.e("signUp", "Success")
+//                Log.e("signUp", insertUser.toString())
+//                Log.e("signUp", "Success")
 
                 Constants.supabase.from("User").insert(insertUser)
 
-                Log.e("signUp", "insert done")
-                Log.e("signUp", "Success")
+//                Log.e("signUp", "insert done")
+//                Log.e("signUp", "Success")
 
                 true
             } catch (e: Exception) {
@@ -94,8 +100,6 @@ class SignUpViewModel() : ViewModel() {
                 false
             }
         } else {
-//            Log.e("signUp", "Error")
-//            Log.e("signUp", "user dont registration")
             false
         }
     }
