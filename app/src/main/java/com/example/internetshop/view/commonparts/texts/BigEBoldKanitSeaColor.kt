@@ -16,6 +16,7 @@ fun BigEBoldKanitSeaColorText(text: String) {
         fontWeight = FontWeight.ExtraBold,
         fontSize = 24.sp,
         textAlign = TextAlign.Center,
+        softWrap = true,
         color = MaterialTheme.colorScheme.secondary
     )
 }

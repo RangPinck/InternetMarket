@@ -37,7 +37,7 @@ fun SellerPanel(navController: NavController) {
             verticalArrangement = Arrangement.SpaceAround,
             content = {
                 items(products, key = { product -> product.id}) { product ->
-                    SellerPanelItem(product = product)
+                    SellerPanelItem(product = product, navController)
                 }
             }
         )

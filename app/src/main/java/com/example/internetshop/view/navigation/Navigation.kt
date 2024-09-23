@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.internetshop.view.createproduct.CreateProduct
 import com.example.internetshop.view.market.Market
 import com.example.internetshop.view.market.MarketViewModel
 import com.example.internetshop.view.sellerpanel.SellerPanel
@@ -25,6 +26,6 @@ fun Navigation() {
         composable(Routes.Profile.route) { Profile(navController) }
         composable(Routes.ChangeProfile.route) { }//ChangeData(navController) }
         composable(Routes.SellerPanel.route) { SellerPanel(navController) }
-        composable(Routes.CreateProduct.route) { } //SellerPanel(navController) }
+        composable(Routes.CreateProduct.route) { CreateProduct(navController) }
     }
 }
